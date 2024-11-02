@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { CountryController } from './country.controller';
 
-@Module({})
+@Module({
+  controllers: [CountryController]
+})
 export class CountryModule {}
