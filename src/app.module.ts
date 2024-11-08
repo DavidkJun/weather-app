@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import {ServeStaticModule} from "@nestjs/serve-static";
 import { join } from 'node:path/win32';
 import { CountryModule } from './country/country.module';
+import { RedirectController } from './redirect/redirect.controller';
 
 @Module({
   imports: [CountryModule,
@@ -12,7 +13,7 @@ import { CountryModule } from './country/country.module';
       serveRoot: '/client'
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, RedirectController],
   providers: [AppService],
 })
 export class AppModule {}
