@@ -1,13 +1,15 @@
 import { Controller, Get, Post, Param, Res } from '@nestjs/common';
+import {CountryService} from "./country.service";
 import { Response } from "express";
 import {join} from 'path'
 
 @Controller('countries')
 export class CountryController {
+  constructor(private readonly countryService: CountryService) {}
+
   @Get(':country')
-  sendCountryFile(@Param('country') country: string, @Res() res: Response) {
-    const filePath = join(__dirname, '..', '..', 'client', country, 'index.html' );
-    res.sendFile(filePath)
+  sendCountry(): Response {
+    this.countryService.sendCountryFile()
   }
 }
 
